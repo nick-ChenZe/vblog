@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>App landing page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container" id="skrollr-body" data-0="background-color:rgb(0,201,147);"
+     data-400="background-color:rgb(74,173,255);" data-1000="background-color:rgb(74,173,255);"
+     data-1300="background-color:rgb(0,201,147);">
+    <h1><i class="icon-circle-blank"></i></h1>
+    <h2>BLUE POND</h2>
+    <p> it's coming to your smartphone </p>
+    <a class="arrow" href="#anchor1"><i class="icon-sort-down"></i></a>
+    </p>
+    <div class="section" id="sect1">
+        <div class="anchor" id="anchor1"></div>
+        <div id="hiddenIcon">
+            <i class="icon-mobile-phone"></i>
+        </div>
+        <div id="phone" data-0="margin-left: -20%; opacity:0" data-350="margin-left: 10%; opacity:1">
+            <div id="topBar">
+                <p>Press---> <i class="icon-bookmark"></i></p>
+            </div>
+            <div id="screen">
+                <div id="map">
+                    <img id="placemark" class="notPlacemarked" src="http://s.cdpn.io/52524/CircleMarkerTest3.png">
+                </div><!--/ map-->
+            </div><!--/ screen-->
+        </div><!--/ phone-->
+        <div class="explanation" data-300="opacity: 0" data-350="opacity: 1">
+            <h2>Right where you are</h2>
+            <p>Play at home, while you eat, while you poop, and while you walk. Actually, better to look at the street
+                while you walk.</p>
+            <a class="arrow" href="#anchor2"><i class="icon-sort-down"></i></a>
+        </div><!--/ explanation-->
+    </div><!--/ sect1-->
+    <div class="section" id="sect2">
+        <div class="anchor" id="anchor2"></div>
+        <div id="hiddenIcon">
+            <i class="icon-twitter"></i>
+        </div>
+        <div id="twitter" data-600="margin-top: -20%; opacity: 0" data-1000="margin-top: 0; opacity:1">
+            <i class="icon-twitter"></i>
+        </div>
+        <div class="explanation" data-850=" opacity: 0" data-900=" opacity:1">
+            <h2>Share your score on Twitter</h2>
+            <p>I don't think you'll ever get to my score. But you can try anyway. Looser. </p>
+            <a class="arrow" href="#anchor3"><i class="icon-sort-down"></i></a>
+        </div><!--/ explanation-->
+    </div><!--sect2-->
+    <div class="section" id="sect3">
+        <div class="anchor" id="anchor3"></div>
+        <div id="hiddenIcon">
+            <i class="icon-rocket icon-rotate-180"></i>
+            <p></p>
+        </div>
+        <div class="explanation-right" data-1350=" opacity: 0" data-1400=" opacity:1">
+            <h2>It's here already!</h2>
+            <p>Leave your email address. Wait, why? Just get it on the <a
+                    href="https://itunes.apple.com/us/app/blue-pond/id939850886?ls=1&mt=8">App Store</a> and <a
+                    href="https://play.google.com/store/apps/details?id=com.damianogui.bluepond">Play Store</a></p>
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup">
+                <form action="http://www.damianogui.com/2014/01/Bluepond/">
+                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="me@example.com"
+                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'me@example.com'" required>
+                    <div><input type="submit" value="I want it!" name="subscribe" id="mc-embedded-subscribe"
+                                class="button"></div>
+                </form>
+            </div>
+            <!--End mc_embed_signup-->
+        </div><!--/ explanation-->
+        <div id="rocket" data-1100="margin-top:-300px; margin-right:0%; opacity: 0"
+             data-1400="margin-top:50; margin-right:20%; opacity:1">
+            <i class="icon-rocket icon-rotate-180"></i>
+        </div><!--/ rocket-->
+    </div><!--sect2-->
+    <div class="section" id="footer">
+        <p> thank you and follow <a href="https://twitter.com/damianogui">@damianogui</a></p>
+    </div>
+</div><!--/ band-->
+<script src="http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.11/skrollr.min.js'></script>
+<script src="js/index.js"></script>
+</body>
+</html>

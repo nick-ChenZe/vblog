@@ -1,0 +1,23 @@
+{
+  "name": "chenze-blog",
+  "version": "1.0.0",
+  "description": "A blog website build by nick-ChenZe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog",
+    "tech",
+    "front-end"
+  ],
+  "author": "nick-Chenze",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.4.2",
+    "fontawesome": "^4.5.0",
+    "markdown-toc": "^0.12.12",
+    "marky-mark": "^1.2.1",
+    "yamljs": "^0.2.8"
+  }
+}

@@ -1,0 +1,18 @@
+<% include ./_partial/head.ejs %>
+<body>
+    <div class="profile-card">
+        <img class="avatar" src=<%= setting.avatar.bgSrc %> >
+        <div class="caption">
+            <img src=<%= setting.avatar.src %>>
+            <h2>
+                <%= setting.profile.name %>
+                <span><%= setting.profile.secondName %></span>
+            </h2>
+            <div><%= setting.profile.description %></div>
+            <%= link_to('blog', url.blog) %>
+            <%= link_to('resume', url.resume) %>
+            <%= link_to('project', url.project) %>
+        </div>
+    </div>
+<% include ./_partial/footer.ejs %>
+</body>
