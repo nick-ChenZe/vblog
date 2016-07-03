@@ -9,9 +9,9 @@
                 <span><%= setting.profile.secondName %></span>
             </h2>
             <div><%= setting.profile.description %></div>
-            <%= link_to('blog', url.blog) %>
-            <%= link_to('resume', url.resume) %>
-            <%= link_to('project', url.project) %>
+            <%= link_to('blog', setting.url.blog) %>
+            <%= link_to('resume', setting.url.resume) %>
+            <%= link_to('project', setting.url.project) %>
         </div>
     </div>
 <% include ./_partial/footer.ejs %>
