@@ -25,7 +25,7 @@ npm run build    // buill bundle file
 ├── package.json   
 ├── photo           //Folder for photo ,minify file is in api folder
 │   ├── photo.yml   //Yaml for photo list,see the template
-├── post			//Folder for markdown,input entry
+├── post			      //Folder for markdown,input entry
 ├── src             //For Vue compontents
 └── webpack.config.js
 ```
