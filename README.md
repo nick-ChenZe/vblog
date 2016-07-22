@@ -1,6 +1,7 @@
-# vblog
+# Vblog（Developing）
 
 A spa blog without any database based on Vue.js
+
 
 ## Usage
 ```js
@@ -25,10 +26,18 @@ npm run build    // buill bundle file
 ├── package.json   
 ├── photo           //Folder for photo ,minify file is in api folder
 │   ├── photo.yml   //Yaml for photo list,see the template
-├── post			      //Folder for markdown,input entry
+├── post			//Folder for markdown,input entry
 ├── src             //For Vue compontents
 └── webpack.config.js
 ```
+
+##TODO
+
+-[ ] searching
+-[ ] comment box style
+-[ ] rewrite node process to promise
+-[ ] 404 error design
+-[ ] post page design
 
 ## LICENSE
 Copyright (c) 2015 viko16

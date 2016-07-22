@@ -33,6 +33,10 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel'
         }, {
+            test: /\.less$/,
+            exclude: /node_modules/,
+            loader: 'less'
+        }, {
             test: /\.html$/,
             loader: 'html'
         }, {

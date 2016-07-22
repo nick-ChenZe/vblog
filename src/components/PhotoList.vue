@@ -1,9 +1,9 @@
 <template>
     <div ctrl="{{$route.name}}">
         <h1>Photo</h1>
-        <ul class="photoList">
+        <ul class="photoList clearfix">
             <li v-for="item in items">
-                <a v-link="{path:'photo/detail'}">
+                <a v-link="{path:`photo/detail/${item.id}`}">
                     <img v-bind:src="item.url">
                     <h5>{{item.title}}</h5>
                 </a>
@@ -16,23 +16,27 @@
         ></router-view>
     </div>
 </template>
-<style lang="less">
+<style lang="less" scoped>
     .view{
         // transition: .1s opacity ease-out;
     }
     .fade-enter, .fade-leave {
       opacity: 0;
     }
-    [ctrl = "photo"]{
-        .photoList li{
-            float: left;
-            width: 220px;
+    .photoList li{
+        float: left;
+        width: 25%;
+        a{  
+            display: inline-block;
+            margin: 20px;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: .4em;
-            margin: 10px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
             img{
                 width: 200px;
+            }
+            h5{
+                text-indent: 2em;
             }
         }
     }

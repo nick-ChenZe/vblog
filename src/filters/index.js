@@ -21,6 +21,24 @@ export function onlyPublishDate(title) {
     return /^\d{4}-\d{1,2}-\d{1,2}/.exec(title);
 }
 
+/**
+ * splice the array
+ *
+ * @param value {Array}
+ * @param num {Number}
+ * @returns {array}
+ */
+export function limitTo(value,num) {
+	console.log(value,num)
+    return value.splice(0,num);
+}
+
+/**
+ * parse date string to date YYYY/MM/DD
+ *
+ * @param value
+ * @returns {String}
+ */
 export function date(value) {
 	var date = new Date(value);
 	var year = date.getFullYear();

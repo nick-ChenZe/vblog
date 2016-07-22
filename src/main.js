@@ -16,6 +16,7 @@ import setting from './setting';
 require('highlight.js/styles/github-gist.css');
 require('lodash');
 var VueResource = require('vue-resource');
+window.duoshuoQuery = {short_name:"chenze2168"};
 
 // debug
 Vue.config.debug = true;
@@ -28,12 +29,12 @@ Vue.use(VueResource);
 let router = new Router();
 
 router.map({
-    'home': {
+    '/home': {
         name: 'home',
         component: Home,
         setting
     },
-    '/list': {
+    '/list/page/:page': {
         name: 'list',
         component: ListView
     },
@@ -49,7 +50,8 @@ router.map({
         name: 'photo',
         component: PhotoList,
         subRoutes:{
-            '/detail':{
+            '/detail/:id':{
+                name: 'photo.detail',
                 component: PhotoDetail
             }
         }

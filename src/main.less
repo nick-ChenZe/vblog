@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    ul{
+        list-style: none;
+        &.inline{
+            li{
+                float: left;
+            }
+        }
+    }
+    ol{
+        padding-left: 1em;
+    }
+    a{
+        text-decoration: none;
+        color: #34495e;
+    }
+}
+h1,h2,h3,h4,h5{
+    margin: 1em 0 .5em 0;
+}
+pre,pre.hljs{
+    border-radius: .5em;
+    padding: 1em;
+    background-color: #efefef;
+    margin: .2em 0;
+}
+p code{
+    background-color: #d1f1d3;
+    color: #487ad2;
+    padding: .2em .3em;
+    border-radius: .3em;
+    font-size: .9em;
+    opacity: .8;
+}
+blockquote{
+    background-color: #efefef;
+    border-left: 8px solid #42b983;
+    padding: .3em 1em;
+    margin: .5em 0;
+}
+.pull-right{
+    float: right !important;
+}
+.clearfix{
+    &:after {
+       content: " "; 
+       visibility: hidden;
+       display: block;
+       height: 0;
+       clear: both;
+    }
+}
+.v-comment-box{
+    .ds-meta,.ds-comments-info,.ds-sync,.ds-powered-by{
+        display: none !important;
+    }
+    .ds-post-options,.ds-textarea-wrapper,.ds-post-button{
+        background: none !important;
+        border: none !important;
+    }
+    .ds-post-options{
+        border-top: 2px solid #ddd !important;
+    }
+    .ds-comments{
+        border-bottom: none !important;
+    }
+    .ds-post-placeholder{
+        display: none !important;
+    }
+    .ds-post-button{
+        border-top: 2px solid #42b983 !important;
+        border-bottom-right-radius: 10px !important;
+        background-color: #42b983 !important;
+        color: white !important;
+        text-shadow: none; 
+    }
+    .ds-toolbar-buttons{
+        top: 8px !important;
+        left: 12px !important;
+    }
+    .ds-avatar img{
+        border-radius: 8px !important;
+        border: 2px solid #aaa !important;
+    }
+    form{
+        border: 2px solid #ddd !important;
+        border-radius: 10px;
+    }
+}

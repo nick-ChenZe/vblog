@@ -9,12 +9,21 @@
             v-html="content.content"
             transition>
         </article>
-
-
+        <div id="comments">
+            <h2>
+                <i class="fa fa-comments"></i>
+                评论区
+            </h2>
+            <div class="ds-thread v-comment-box" v-bind:data-thread-key="key" v-bind:data-title="content.meta.title" v-bind:data-url="url"></div>
+        </div>
+     </div>  
+      
 </template>
 
 <script>
-    import setting from '../setting';
+    //TODO change DUOSHUO to DUSQUS
+    var duoshuoFn = require('../setting/embed.js').default;
+
     export default {
         name: 'PostView',
 
@@ -25,17 +34,20 @@
                         title: 'Loading...'
                     },
                     content: 'Loading...'
-                }
+                },
+                url: window.location.href,
+                key: 'post'+this.$route.params.id
            }
         },
-        route:{
-            data (){
-                let id = this.$route.params.id;
-                this.$http.get(`../../api/${id}.json`)
-                    .then(res => {
-                        this.content = JSON.parse(res.body); 
-                    })
-            }
+        attached(){
+            let id = this.$route.params.id;
+            this.url = window.location.href;
+            this.key = 'post'+this.$route.params.id
+            this.$http.get(`../../api/${id}.json`)
+                .then(res => {
+                    this.content = JSON.parse(res.body); 
+                })
+            duoshuoFn.initDuoShuo();
         }
     }
 
@@ -49,6 +61,7 @@
             line-height: 2;
             margin-bottom: .5em;
             margin-top: 2em;
+            text-align: center;
         }
 
         p {
