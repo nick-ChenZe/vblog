@@ -32,13 +32,12 @@ npm run build    // buill bundle file
 ```
 
 ##TODO
-```
+
 - [ ] searching
 - [ ] comment box style
 - [ ] rewrite node process to promise
 - [ ] 404 error design
 - [ ] post page design
-```
 
 ## LICENSE
 Copyright (c) 2015 viko16
