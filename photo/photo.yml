@@ -1,11 +1,11 @@
 - title: test
   date: 2012-08-11 12:22:31
   url: /photo/images/test.png
-  desc: this is the first pic
+  desc: "this is the first pic"
 - title: 测试
   date: 2012-08-12 12:22:22
   url: /photo/images/block.png
-  desc: 中文测试
+  desc: "中文测试"
 
 
 

@@ -1,0 +1,40 @@
+.paper {
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.paper::before,
+.paper::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  width: 40%;
+  height: 200px;
+  paper-shadow: 0 5px 14px rgba(0,0,0,.7);
+  z-index: 99;
+  transition: all .3s ease-in-out;
+}
+
+.paper::before {
+  left: 15px;
+  transform: skew(-5deg) rotate(-5deg);
+}
+
+.paper::after {
+  right: 15px;
+  transform: skew(5deg) rotate(5deg);
+}
+
+.paper:hover::before,
+.paper:hover::after {
+  paper-shadow: 0 2px 14px rgba(0,0,0,.4);
+}
+
+.paper:hover::before {
+  left: 5px;
+}
+
+.paper:hover::after {
+  right: 5px;
+}

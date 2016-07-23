@@ -4,6 +4,7 @@
 
 //TODO convert to Promise
 //TODO abstract setting to config.yml
+const _ = require("lodash");
 const yaml = require('js-yaml');
 const fs   = require('fs');
 const file = require('./lib/file.js');
@@ -51,7 +52,12 @@ function minImage(entry,output) {
         ]
     })
 }
+/*
+* generate post or photo id
+*/
+function generateId(origin){
 
+}
 fs.readdir(__dirname+'/post',function (err,data) {
     if(err){console.log(`[Read Directory Error]: ${err}`)}
     _data.blog = [];
@@ -78,5 +84,8 @@ fs.readdir(__dirname+'/post',function (err,data) {
             file.mkNestFileSync(`./api/photoList.json`,JSON.stringify(arr));
         }
     });
+    _list = _.sortBy(_list,function(n){
+        return new Date(n.date).getTime();
+    })
     file.mkNestFileSync(`./api/list.json`,JSON.stringify(_list));
 });

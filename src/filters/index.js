@@ -20,6 +20,15 @@ export function onlyPublishDate(title) {
     // return /^\d{4}-(?:0?[1-9]|1[0-2])-\d{1,2}/.exec(title);
     return /^\d{4}-\d{1,2}-\d{1,2}/.exec(title);
 }
+/**
+ * capitalize
+ *
+ * @param title
+ * @returns {array|null}
+ */
+export function toCapitalize(value) {
+     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+}
 
 /**
  * splice the array

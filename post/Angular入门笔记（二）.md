@@ -1,5 +1,5 @@
 ---
-title: Angular入门笔记（二）
+title: AngularJS入门笔记（二）
 date: 2016-02-01 20:52:10
 tags: ["AngularJS"]
 categories: "笔记"

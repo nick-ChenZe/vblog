@@ -1,5 +1,5 @@
 <template>
-	<div class="vue-pagination">
+	<div class="pagination">
 		<ul class="inline clearfix">
 			<li><a href="javascript:;" v-on:click="prevPage"><</a></li>
 			<li v-for="n in pageNum"><a href="javascript:;" v-bind:class="{'active': page == n+1}" v-on:click="pageChange(n+1)" v-on:click="pageChange()">{{n+1}}</a></li>
@@ -50,13 +50,8 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-	.vue-pagination{
-		position: absolute;
-		bottom: 20px;
-		left: 50%;
-		transform: translate(-50%,0);
+	.pagination{
 		text-align: center;
-		margin: 60px 0;
 		ul.inline{
 			display: inline-block;
 			li{

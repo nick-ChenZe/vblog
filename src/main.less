@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 *{
     margin: 0;
     padding: 0;
@@ -17,8 +19,17 @@
         color: #34495e;
     }
 }
+
+body {
+    font-family: "Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+    color: #34495e;
+}
 h1,h2,h3,h4,h5{
-    margin: 1em 0 .5em 0;
+    margin: 0;
 }
 pre,pre.hljs{
     border-radius: .5em;
@@ -27,11 +38,13 @@ pre,pre.hljs{
     margin: .2em 0;
 }
 p code{
-    background-color: #d1f1d3;
+    font-family: "Microsoft YaHei";
     color: #487ad2;
     padding: .2em .3em;
     border-radius: .3em;
-    font-size: .9em;
+    font-size: 1em;
+    text-shadow: 1px 1px 0 #999;
+    font-weight: bold;
     opacity: .8;
 }
 blockquote{
@@ -53,39 +66,57 @@ blockquote{
     }
 }
 .v-comment-box{
-    .ds-meta,.ds-comments-info,.ds-sync,.ds-powered-by{
+    .ds-meta,.ds-comments-info,.ds-sync,.ds-powered-by,.ds-toolbar-buttons{
         display: none !important;
     }
     .ds-post-options,.ds-textarea-wrapper,.ds-post-button{
         background: none !important;
-        border: none !important;
     }
     .ds-post-options{
-        border-top: 2px solid #ddd !important;
+        background-color: #eee !important;
+        border-width: 0 0 2px 0 !important;
+        border-color: #ddd !important;
+        border-bottom-left-radius: 10px !important;
+    }
+    #ds-ctx{
+        border-color: #42b983 !important;
+        .ds-ctx-entry{
+            border: none !important;
+        }
+    }
+    .ds-post{
+        border-top: none !important;
     }
     .ds-comments{
         border-bottom: none !important;
+    }
+    #ds-reset .ds-highlight{
+        font-size: 16px !important;
+        color: #4285f4 !important;
+    }
+    .ds-comment-body p,.ds-comment-context{
+        font-size: 14px !important;
+        color: #666 !important;
     }
     .ds-post-placeholder{
         display: none !important;
     }
     .ds-post-button{
-        border-top: 2px solid #42b983 !important;
+        border-width: 0 0 2px 0 !important;
+        border-color: #42b983 !important;
         border-bottom-right-radius: 10px !important;
-        background-color: #42b983 !important;
+        background-color: #b6e7b4 !important;
         color: white !important;
-        text-shadow: none; 
+        text-shadow: none !important; 
     }
-    .ds-toolbar-buttons{
-        top: 8px !important;
-        left: 12px !important;
+    .ds-textarea-wrapper{
+        border: 2px solid #eee !important;
+        border-bottom: none !important;
+        border-radius: 10px 10px 0 0 !important;
     }
-    .ds-avatar img{
-        border-radius: 8px !important;
-        border: 2px solid #aaa !important;
-    }
-    form{
-        border: 2px solid #ddd !important;
-        border-radius: 10px;
-    }
+}
+.both-center{
+    display:flex;
+    justify-content:center;
+    align-items: center;
 }

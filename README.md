@@ -33,11 +33,13 @@ npm run build    // buill bundle file
 
 ##TODO
 
+
 - [ ] searching
-- [ ] comment box style
+- [x] comment box style
 - [ ] rewrite node process to promise
-- [ ] 404 error design
+- [x] 404 error design
 - [ ] post page design
+- [ ] abstract vue compontents to compontents and viewsn
 
 ## LICENSE
 Copyright (c) 2015 viko16
