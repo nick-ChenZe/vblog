@@ -1,8 +1,7 @@
-# Vblog（Developing）
+# <img src="./logo.png" width="60px" height="60px" />Vblog（Developing）
 
-![logo](./logo.png)A spa blog without any database based on Vue.js
+A spa blog without any database based on Vue.js
 
-``
 ## Usage
 ```js
 npm run generate //generate data file
