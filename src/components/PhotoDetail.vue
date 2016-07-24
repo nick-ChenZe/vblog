@@ -2,7 +2,7 @@
     <div class="mask" ctrl="{{$route.name}}">
         <main class="content">
             <div class="img-content">
-                <img v-bind:src="detail.url" height="600" width="800" alt=""> 
+                <img v-bind:src="detail.url" alt=""> 
             </div>
             <div class="side">
                 <figcaption>
@@ -125,13 +125,11 @@
                     this.$http.get('../../api/photoList.json')
                     .then(res => {
                         list = JSON.parse(res.body);
-                        this.detail = _.filter(list,{id:+this.$route.params.id})[0];
+                        this.detail = _.filter(list,{id:this.$route.params.id})[0];
                     })
                 }else{
-                    this.detail = _.filter(list,{id:+this.$route.params.id})[0];
-                    console.log(this.detail);
+                    this.detail = _.filter(list,{id:this.$route.params.id})[0];
                 }
-                console.log('p',this.detail);
             }
         }
 

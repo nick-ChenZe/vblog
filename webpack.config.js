@@ -20,7 +20,7 @@ module.exports = {
     },
     output: {
         path: BUILD_PATH,
-        publicPath: '/dist',
+        publicPath: '/dist/',
         filename: '[name].js',
         chunkFilename: '[chunkhash:8].js'
     },

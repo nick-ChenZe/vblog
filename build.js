@@ -1,7 +1,7 @@
 /**
  * Created by chenze on 16/7/16.
  */
-
+"use strict"
 //TODO convert to Promise
 //TODO abstract setting to config.yml
 const _ = require("lodash");
@@ -55,30 +55,35 @@ function minImage(entry,output) {
 /*
 * generate post or photo id
 */
-function generateId(origin){
-
+function generateId(title,date){
+    title = title || '';
+    var d = new Date(date),result = '';
+    var _title = title[title.length-1];
+    var _date = ''+d.getFullYear()+d.getMonth()+d.getDate();
+    Array.from(_title+_date).forEach(v=>{
+        result += v.codePointAt();
+    })
+    return result;
 }
 fs.readdir(__dirname+'/post',function (err,data) {
     if(err){console.log(`[Read Directory Error]: ${err}`)}
     _data.blog = [];
-    var id = 0;
     data.forEach(function(v){
         var path = __dirname +'/post/' +v;
         var text,meta,content;
         text = Reg.exec(fs.readFileSync(path, 'utf8'));
         try{
             meta = yaml.safeLoad(text[2]);
-            meta.id = id;
+            meta.id = generateId(meta.title,meta.date);
             _list.push(meta);
             content = md.render(text[3]);
-            file.mkNestFileSync(`./api/${id}.json`,JSON.stringify({meta,content}));
+            file.mkNestFileSync(`./api/${meta.id}.json`,JSON.stringify({meta,content}));
         }catch(e){
             console.log(`[Read Markdown Error]:In ${v}: ${e}`);
         }
-        id++;
     });
     yamlToPhoto('./photo/photo.yml').forEach((v,k,arr)=>{
-        v.id = k;
+        v.id = generateId(v.title,v.date);
         minImage('./photo/images/*.{jpg,png}')
         if(k == arr.length-1){
             file.mkNestFileSync(`./api/photoList.json`,JSON.stringify(arr));
@@ -86,6 +91,6 @@ fs.readdir(__dirname+'/post',function (err,data) {
     });
     _list = _.sortBy(_list,function(n){
         return new Date(n.date).getTime();
-    })
+    });
     file.mkNestFileSync(`./api/list.json`,JSON.stringify(_list));
 });

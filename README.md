@@ -1,8 +1,8 @@
 # Vblog（Developing）
 
-A spa blog without any database based on Vue.js
+![logo](./logo.png)A spa blog without any database based on Vue.js
 
-
+``
 ## Usage
 ```js
 npm run generate //generate data file
@@ -42,7 +42,7 @@ npm run build    // buill bundle file
 - [ ] abstract vue compontents to compontents and viewsn
 
 ## LICENSE
-Copyright (c) 2015 viko16
+Copyright (c) 2015 nick-ChenZe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
