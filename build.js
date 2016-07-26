@@ -2,7 +2,7 @@
  * Created by chenze on 16/7/16.
  */
 "use strict"
-//TODO convert to Promise
+//TODO convert to Promise or gulp
 //TODO abstract setting to config.yml
 const _ = require("lodash");
 const yaml = require('js-yaml');
@@ -19,7 +19,7 @@ const md = require('markdown-it')({
         if (lang && hljs.getLanguage(lang)) {
             try {
                 return '<pre class="hljs"><code>' +
-                    hljs.highlight(lang, str, true).value +
+                    hljs.highlight(lang, str, true).value + 
                     '</code></pre>';
             } catch (__) {}
         }
@@ -53,6 +53,48 @@ function minImage(entry,output) {
     })
 }
 /*
+* generate html snapshot
+*/
+function htmlSubstring(s, n) {
+    var m, r = /<([^>\s]*)[^>]*>/g,
+        stack = [],
+        lasti = 0,
+        result = '';
+
+    //for each tag, while we don't have enough characters
+    while ((m = r.exec(s)) && n) {
+        //get the text substring between the last tag and this one
+        var temp = s.substring(lasti, m.index).substr(0, n);
+        //append to the result and count the number of characters added
+        result += temp;
+        n -= temp.length;
+        lasti = r.lastIndex;
+
+        if (n) {
+            result += m[0];
+            if (m[1].indexOf('/') === 0) {
+                //if this is a closing tag, than pop the stack (does not account for bad html)
+                stack.pop();
+            } else if (m[1].lastIndexOf('/') !== m[1].length - 1) {
+                //if this is not a self closing tag than push it in the stack
+                stack.push(m[1]);
+            }
+        }
+    }
+
+    //add the remainder of the string, if needed (there are no more tags in here)
+    result += s.substr(lasti, n);
+
+    //fix the unclosed tags
+    while (stack.length) {
+        result += '</' + stack.pop() + '>';
+    }
+
+    return result;
+
+}
+
+/*
 * generate post or photo id
 */
 function generateId(title,date){
@@ -75,8 +117,10 @@ fs.readdir(__dirname+'/post',function (err,data) {
         try{
             meta = yaml.safeLoad(text[2]);
             meta.id = generateId(meta.title,meta.date);
-            _list.push(meta);
             content = md.render(text[3]);
+            // meta.snapshot = content.replace(/(<([^>]+)>)/ig,'').substring(0,200);
+            meta.snapshot = htmlSubstring(content,200);
+            _list.push(meta);
             file.mkNestFileSync(`./api/${meta.id}.json`,JSON.stringify({meta,content}));
         }catch(e){
             console.log(`[Read Markdown Error]:In ${v}: ${e}`);
@@ -90,7 +134,7 @@ fs.readdir(__dirname+'/post',function (err,data) {
         }
     });
     _list = _.sortBy(_list,function(n){
-        return new Date(n.date).getTime();
+        return - new Date(n.date).getTime();
     });
     file.mkNestFileSync(`./api/list.json`,JSON.stringify(_list));
 });

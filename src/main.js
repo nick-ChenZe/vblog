@@ -3,18 +3,18 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 // components
-import App from './components/App.vue';
-import ListView from './components/ListView.vue';
-import PostView from './components/PostView.vue';
+import App from './App.vue';
 import PhotoList from './components/PhotoList.vue';
-import Home from './components/Home.vue';
-import About from './components/About.vue';
+import Home from './views/Home.vue';
+import Blog from './views/Blog.vue';
+import Category from './views/Category.vue';
+import Post from './views/Post.vue';
 import PhotoDetail from './components/photoDetail.vue';
-// setting
-import setting from './setting';
+
 //require('bootstrap/dist/css/bootstrap.min.css');
 require('highlight.js/styles/github-gist.css');
 require('lodash');
+require('font-awesome/css/font-awesome.min.css')
 var VueResource = require('vue-resource');
 window.duoshuoQuery = {short_name:"chenze2168"};
 
@@ -26,25 +26,24 @@ Vue.use(Router);
 Vue.use(VueResource);
     
 // routing
-let router = new Router();
+let router = new Router();  
 
 router.map({
     '/home': {
         name: 'home',
-        component: Home,
-        setting
+        component: Home
     },
-    '/list/page/:page': {
-        name: 'list',
-        component: ListView
+    '/blog': {
+        name: 'Blog',
+        component: Blog
     },
     '/post/:id': {
         name: 'post',
-        component: PostView
+        component: Post
     },
-    'about': {
-        name: 'about',
-        component: About
+    '/category': {
+        name: 'category',
+        component: Category
     },
     '/photo': {
         name: 'photo',

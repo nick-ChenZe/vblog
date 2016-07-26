@@ -1,22 +1,13 @@
 ---
 title: "[译]A Few Thoughts: On Tyus Jones"
 date: 2016-05-24 18:32:49
-tags: "NBA"
+tags: ["NBA"]
 categories: "翻译"
 ---
 
-A Few Thoughts: On Tyus Jones
+By Lucas Seehafer  @SeehaferNBA on May 6, 2016, 6:40a 608
 
-By Lucas Seehafer  @SeehaferNBA on May 6, 2016, 6:40a 608
 关于泰厄斯-琼斯的几点想法
-
-Neville E. Guard-USA TODAY Sports
-
-What exactly do the Wolves have in young point guard Tyus Jones?
-
-森林狼到底想从泰厄斯-琼斯这名年轻的控卫身上得到什么？
-
- TWEET  SHARE  PIN
 
 What, exactly, do the Minnesota Timberwolves have in rookie point guard Tyus Jones?
 

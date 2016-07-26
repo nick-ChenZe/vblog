@@ -29,6 +29,36 @@ export function onlyPublishDate(title) {
 export function toCapitalize(value) {
      return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
+/**
+ * date
+ *
+ * @param title
+ * @returns {array|null}
+ */
+export function dateAgo(value) {
+    let date = new Date(value);
+    let now = new Date();
+    let y = date.getFullYear(),
+        m = date.getMonth(),
+        d = date.getDate()
+    let Y = now.getFullYear(),
+        M = now.getMonth(),
+        D = now.getDate();
+    let _y = Y - y;
+    let _m = M - m;
+    let _d = D - d;
+    if(date.getTime()>now.getTime()){
+        return "未来"
+    }else if(_y >= 1){
+        return _y+'年前';
+    }else if(_m >= 1){
+        return _m+'个月前';
+    }else if(_d >= 1){
+        return _d+'天前';
+    }else{
+        return "刚刚";
+    }
+}
 
 /**
  * splice the array
@@ -37,9 +67,10 @@ export function toCapitalize(value) {
  * @param num {Number}
  * @returns {array}
  */
-export function limitTo(value,num) {
-	console.log(value,num)
-    return value.splice(0,num);
+export function limit(arr, limit) {
+    if(Array.isArray(arr)){
+        return arr.slice(0, new Number(limit));
+    }
 }
 
 /**

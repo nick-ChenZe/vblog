@@ -1,7 +1,7 @@
 ---
 title: "[译]那些你早就应该知道关于JavaScript作用域（scope）的事"
 date: 2016-04-17 23:12:19
-tags: ["JavaScript",“闭包”,“作用域”]
+tags: [JavaScript,闭包,作用域]
 categories: "翻译"
 banner: http://i.niupic.com/images/2016/04/20/WZpXaW.jpg
 thumbnail: http://7xt64w.com2.z0.glb.clouddn.com/quill-175980_1280.png

@@ -45,17 +45,29 @@ module.exports = {
         }, {
             test: /\.(png|jpg|jpeg)$/,
             loader: 'url?limit=5120'
-        }, {
-            test: /\.(gif|svg|woff|woff2|ttf|eot|otf)$/,
-            loader: 'file'
-        }
+        },{
+              test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+              loader: "file"
+            }, {
+              test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+              loader: "file"
+            }, {
+              test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+              loader: "file"
+            }, {
+              test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+              loader: "file"
+            }, {
+              test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+              loader: "file"
+            }  
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'UnKnown Me',
+            title: '竖八不正',
             template: path.resolve(SRC_PATH, 'index.html'),
-            filename: '../index.html'
+            filename: '../xindex.html'
         })
     ],
     vue: {
