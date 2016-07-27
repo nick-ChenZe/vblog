@@ -39,7 +39,8 @@ router.map({
     },
     '/post/:id': {
         name: 'post',
-        component: Post
+        component: Post,
+        canReuse:false
     },
     '/category': {
         name: 'category',

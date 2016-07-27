@@ -35,9 +35,9 @@ npm run build    // buill bundle file
 
 - [ ] searching
 - [x] comment box style
-- [ ] rewrite node process to promise
+- [x] rewrite node process to promise
 - [x] 404 error design
-- [ ] post page design
+- [x] post page design
 - [ ] abstract vue compontents to compontents and viewsn
 
 ## LICENSE

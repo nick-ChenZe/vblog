@@ -9,24 +9,22 @@ const yaml = require('js-yaml');
 const fs   = require('fs');
 const file = require('./lib/file.js');
 const hljs = require('highlight.js');
-const imagemin = require('imagemin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
+// const imagemin = require('imagemin');
+// const imageminMozjpeg = require('imagemin-mozjpeg');
+// const imageminPngquant = require('imagemin-pngquant');
 const Reg = /^(-{3}(?:\n|\r)([\w\W]+?)(?:\n|\r)-{3})?([\w\W]*)*/;
-const md = require('markdown-it')({
-    html: true,
-    highlight: function (str, lang) {
-        if (lang && hljs.getLanguage(lang)) {
-            try {
-                return '<pre class="hljs"><code>' +
-                    hljs.highlight(lang, str, true).value + 
-                    '</code></pre>';
-            } catch (__) {}
-        }
+// const md = require('markdown-it')({
+//     html: true,
+//     highlight: function (str, lang) {
+//         if (lang && hljs.getLanguage(lang)) {
+//             try {
+//                 return `<pre class="hljs" lang=${lang}><code>${hljs.highlight(lang, str, true).value}</code></pre>`;
+//             } catch (__) {}
+//         }
 
-        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-    }
-});
+//         return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+//     }
+// });
 var _data = {};
 var _list = [];
 var _photo = [];

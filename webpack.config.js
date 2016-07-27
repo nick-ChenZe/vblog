@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // path
 var ROOT_PATH = path.resolve(__dirname);
+//theme
 var SRC_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
@@ -45,23 +46,22 @@ module.exports = {
         }, {
             test: /\.(png|jpg|jpeg)$/,
             loader: 'url?limit=5120'
-        },{
-              test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-              loader: "file"
-            }, {
-              test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-              loader: "file"
-            }, {
-              test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-              loader: "file"
-            }, {
-              test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-              loader: "file"
-            }, {
-              test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-              loader: "file"
-            }  
-        ]
+        }, {
+            test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "file"
+        }, {
+            test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "file"
+        }, {
+            test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "file"
+        }, {
+            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "file"
+        }, {
+            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "file"
+        }]
     },
     plugins: [
         new HtmlWebpackPlugin({

@@ -100,7 +100,6 @@
                 text-align: left;
                 font-size: 1.5em;
                 padding: 1.5em;
-                border-bottom: 4px dashed;
                 .title{
                     i{
                         margin: 0 1em;
@@ -108,13 +107,6 @@
                     a{
                         display: inline-block;
                         width: 70%;
-                    }
-                }
-                &:hover{
-                    background-color: #5495f1;
-                    color: white;
-                    a{
-                        color: white;
                     }
                 }
                 .tags{

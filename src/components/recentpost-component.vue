@@ -1,0 +1,11 @@
+<template>
+	<div>
+		<h1>最近发布的文章</h1>
+		<ul>
+			<li>1111</li>
+			<li>2222</li>
+			<li>3333</li>
+			<li>4444</li>
+		</ul>
+	</div>
+</template>

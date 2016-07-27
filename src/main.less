@@ -1,3 +1,4 @@
+//reset
 *{
     margin: 0;
     padding: 0;
@@ -17,7 +18,26 @@
         color: #34495e;
     }
 }
+// .html
+.html{
+    p{
+        margin: 1em 0;
+        text-indent: 2em;
+        line-height: 1.6;
+        font-size: 1.1em;
+    }
+    blockquote{
+        font-size: .9em;
+        p{
+            margin: .5em 0;
+        }
+    }
+    h1,h2,h3,h4,h5,h6{
+        margin: .5em 0;
+    }
+}
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+@blue: #161F26;
 
 body {
     font-family: Lato,"Microsoft YaHei","微软雅黑",Arial,sans-serif;
@@ -31,11 +51,27 @@ h1,h2,h3,h4,h5{
     margin: 0;
 }
 pre,pre.hljs{
-    border-radius: .5em;
+    position: relative;
+    border-radius: .3em;
     padding: 1em;
-    font-size: .8em;
     background-color: #efefef;
     margin: .2em 0;
+    border: 1px solid #ccc;
+    &:before{
+        content: attr(lang);
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 60px;
+        padding: .1em .5em;
+        background-color: #ccc;
+        color: black;
+        text-align: center;
+        border-radius: .1em;
+        border-radius: 0 0 0 .3em;
+        text-transform: lowercase;
+    }
 }
 p code{
   padding: 2px 4px;
@@ -47,9 +83,12 @@ p code{
 blockquote{
     background-color: #efefef;
     line-height: 1.6;
-    border-left: 8px solid #42b983;
+    border-left: 6px solid @blue;
     padding: .3em 1em;
     margin: .5em 0;
+    p{
+        text-indent: 0 !important;
+    }
 }
 .btn{
     font-family: Lato;
@@ -138,16 +177,7 @@ blockquote{
         border-radius: 10px 10px 0 0 !important;
     }
 }
-.html{
-    p{
-        margin: 1em 0;
-        line-height: 1.6;
-        font-size: 1.1em;
-    }
-    h1,h2,h3,h4,h5,h6{
-        margin: .5em 0;
-    }
-}
+
 #app{
     width: 100vw;
     height: 100vh;
