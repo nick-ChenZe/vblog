@@ -48,7 +48,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --watch",
-    "build": "node build && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "node build/build && cross-env NODE_ENV=production webpack --progress --hide-modules",
     "generate": "node build/build"
   },
   "repository": {

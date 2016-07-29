@@ -129,12 +129,12 @@
                     meta: {
                         title: 'Loading...',
                         prev:{
-                            title:'',
-                            id:''
+                            title:null,
+                            id:null
                         },
                         next:{
-                            title:'',
-                            id:''
+                            title:null,
+                            id:null
                         }
                     },
                     content: 'Loading...'
@@ -146,21 +146,21 @@
            }
         },
         route:{
-            canReuse:false,
-            activate(){
+            data(){
                 let id = this.$route.params.id;
-            this.url = window.location.href;
-            this.key = 'post'+this.$route.params.id;
-            this.$http.get(`../../api/${id}.json`)
-                .then(res => {
+                this.url = window.location.href;
+                this.key = 'post'+this.$route.params.id;
+                this.$http.get(`../../api/${id}.json`)
+                    .then(res => {
                     this.content = JSON.parse(res.body); 
                     this.title = this.content.meta.title;
+                    this.$children.forEach(v=>{
+                    if(v.constructor.name == 'CommentBox'){
+                            v.init();return;                    
+                        }
+                    })
+                    document.body.scrollTop = 0;
                 })
-            this.$children.forEach(v=>{
-                if(v.constructor.name == 'CommentBox'){
-                    v.init();return;                    
-                }
-            })
             }
             
         }

@@ -13,12 +13,6 @@
 	        <a href="/#!/blog">Blog
 	        </a>
 	        <a href="">CV</a>
-	        <a href="/#!/category">
-	        	Category
-	        </a>
-	        <a href="/#!/photo">
-	        	Gallery
-	        </a>
 		</div>
 		<div class="arch" align="left">
 			<h4><i class="fa fa-briefcase"></i>ARCHIVES</h4>
@@ -58,7 +52,7 @@
 		.social{
 			padding: 0 40px;
 			ul{
-				margin-top: -15px;
+				margin-top: 20px;
 				display: flex;
 				width: 100%;
 			}
@@ -122,7 +116,7 @@
 			}
 		}
 		.arch{
-			padding: 40px 20px;
+			padding: 10px 20px;
 			h4{
 				i{
 					margin-right: .5em;

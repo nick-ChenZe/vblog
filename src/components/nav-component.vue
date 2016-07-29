@@ -10,16 +10,6 @@
 		        </a>
 		    </li>
 		    <li>
-		        <a href="/#!/category">
-		        	Category
-		        </a>
-		    </li>
-		    <li>
-		        <a href="/#!/photo">
-		        	Gallery
-		        </a>
-		    </li>
-		    <li>
 		        <a href="http://weibo.com/2064567411" target="_blank">
 		        Weibo
 		        </a>
@@ -33,7 +23,7 @@
 		        </a>
 		    </li>
 		    <li>
-		        <a href="/CV.html">
+		        <a href="/CV/index.html">
 		        	CV
 		        </a>
 		    </li>

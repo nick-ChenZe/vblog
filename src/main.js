@@ -4,12 +4,10 @@ import Router from 'vue-router';
 
 // components
 import App from './App.vue';
-import PhotoList from './components/PhotoList.vue';
 import Home from './views/Home.vue';
 import Blog from './views/Blog.vue';
 import Category from './views/Category.vue';
 import Post from './views/Post.vue';
-import PhotoDetail from './components/photoDetail.vue';
 
 //require('bootstrap/dist/css/bootstrap.min.css');
 require('highlight.js/styles/github-gist.css');
@@ -42,24 +40,9 @@ router.map({
         component: Post,
         canReuse:false
     },
-    '/category': {
-        name: 'category',
-        component: Category
-    },
-    '/photo': {
-        name: 'photo',
-        component: PhotoList,
-        subRoutes:{
-            '/detail/:id':{
-                name: 'photo.detail',
-                component: PhotoDetail
-            }
-        }
-    },
-    //404
     '/404':{
         name:'error',
-        component: require("./components/Error.vue")
+        component: require("./views/Error.vue")
     }
 });
 

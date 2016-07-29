@@ -67,7 +67,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: '竖八不正',
             template: path.resolve(SRC_PATH, 'index.html'),
-            filename: '../xindex.html'
+            filename: '../index.html'
         })
     ],
     vue: {

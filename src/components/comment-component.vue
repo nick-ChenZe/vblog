@@ -19,7 +19,8 @@
 			init(){
 				if (window.DUOSHUO) {
 		            var head = document.querySelector("head");
-		            var el = document.querySelector("#ds-thread").innerHTML = '';
+		            var el = document.querySelector("#ds-thread");
+		            if(el){el.innerHTML = '';}
 		            var oldEl = document.querySelector("[src*='embed.js']");
 		            head.removeChild(oldEl);
 		            window.DUOSHUO = null;
