@@ -78,20 +78,26 @@ function f4(lists) {
 	var metaList =  _.sortBy(metaList,function(n){
         return - new Date(n.date).getTime();
     })
-	metaList.forEach(function(v,k,o){
-        if(Array.isArray(v.tags)){
-            tags.push(v.tags);
-        }
-        var title = v.title,id = v.id;
-        if(k == o.length-1){
-            o[k-1].prev = {title,id}  
-        }else if(k == 0){
-            o[k+1].next = {title,id}  
-        }else{
-            o[k-1].prev = {title,id}  
-            o[k+1].next = {title,id}  
-        }
-    });
+    try{
+        metaList.forEach(function(v,k,o){
+            if(Array.isArray(v.tags)){
+                tags.push(v.tags);
+            }
+            var title = v.title,id = v.id;
+            if(o.length == 1){
+                //only has one post
+            }else if(k == o.length-1){
+                o[k-1].prev = {title,id}  
+            }else if(k == 0){
+                o[k+1].next = {title,id}  
+            }else{
+                o[k-1].prev = {title,id}  
+                o[k+1].next = {title,id}  
+            }
+        });
+    }catch(e){
+        console.log(e);
+    }
     listObject = {
         totalStringLength: totalStringLength,
         tagNumber: _.uniq(_.flatten(tags)).length,
