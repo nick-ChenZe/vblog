@@ -1,129 +1,114 @@
 <template>
 	 <main class="post-view">
-        <section class="content">
-            <header class="banner">
-                <a v-link="{path:'/blog'}">Home</a>
-                <img src="/lib/assets/WZpXaW.jpg">
-            </header>
-            <div class="blog">
-                <h1>{{content.meta.title}}</h1>
-                <p>
-                    <span class="icon fa fa-calendar"></span>
-                    {{content.meta.date | date}}
+        <header class="banner">
+            <a v-link="{path:'/blog'}">Home</a>
+            <img src="/lib/assets/WZpXaW.jpg">
+        </header>
+        <section class="blog col-md-offset-1 col-md-10 col-sm-12">
+            <div class="post">
+                <h1 class="title">{{content.meta.title}}</h1>
+                <p class="desc">
+                
+                    <span class="icon glyphicon glyphicon-home"></span>
+                    发布于{{content.meta.date | date}}
+
+                    <span class="icon glyphicon glyphicon-bookmark"></span>
+                    {{content.meta.categories | capitalize}}
+
                 </p>
                 <div class="html" v-html="content.content"></div>
             </div>
-            <div class="into">
+            <p class="label-list">
+                <span class="label" v-for="tag in content.meta.tags">{{tag}}</span>
+            </p>
+            <div class="into hidden-xs">
                 <intro-component></intro-component>
             </div>
-            <div class="page">
-
-                <a v-if="content.meta.prev" v-link="{path:`/post/${content.meta.prev.id}`}">
-                    <i class="fa fa-chevron-circle-left"></i>
+            <div class="page clearfix text-center hidden-xs">
+                <div class="col-md-6">
+                    <p><span class="label">Next</span>下一篇文章：</p>
+                    <a v-if="content.meta.prev" v-link="{path:`/post/${content.meta.prev.id}`}">
                     {{content.meta.prev.title}}
-                </a>
-                <a v-link="{path:`/post/${content.meta.next.id}`}">
+                    </a>
+                    <a v-else href="javascript:;">这是最新的一篇文章</a>
+                </div>
+                <div class="col-md-6 ">
+                    <p><span class="label">Last</span>上一篇文章：</p>
+                    <a v-if="content.meta.next"v-link="{path:`/post/${content.meta.next.id}`}">
                     {{content.meta.next.title}}
-                    <i class="fa fa-chevron-circle-right"></i>
-                </a>
+                    </a>
+                <a v-else href="javascript:;">这是最早的一篇文章</a>
+                </div>
             </div>
-            <comment-component 
+           <!--  <comment-component 
                 class="v-comment-box"
                 :key="key" 
                 :title="title"
                 :url="url"
-            ></comment-component>
+            ></comment-component> -->
         </section>
     </main>
 </template>	
-<style lang="less" scoped>
+<style lang="less">
+    @import "../style/highlight.less";
+    @import "../style/comment.less";
     .banner{
+        display: block;
         position: relative;
-        height: 400px;
+        height: 300px;
+        a,img{
+            position: absolute;
+        }
         a{
-            display: inline-block;
-            post: absolute;
-            margin: 1em;
             color: white;
+            margin: 1em;
         }
         img{
-            position: absolute;
             width: 100%;
-            height: 100%;  
-            top: 0;
-            left:0;
+                height: inherit;
             z-index: -1;
         }
     }
+    .label-list,.into{
+        margin: 4em 0;
+    }
     .page{
-        height: 80px;
-        background-color: #eee;
-        padding: 0 100px;
-        line-height: 80px;
-        font-size: 1.1em;
-        display: flex;
-        a{
-            i{
-                margin: 0 .5em;
-                vertical-align: -2px;
-                font-size: 1.5em;
-            }
-            flex: 1;
-            color: #aaa;
-            &:last-child{
-                text-align: right;
-            }
-        }
-    }
-    span.icon{
-        display: inline-block;
-        background-color: white;
-        height: 30px;
-        width: 30px;
-        border-radius: 100%;
-        box-shadow: 0 0 4px rgba(0,0,0,.1); 
-    }
-    .blog{
-        padding: 0 60px;
-        h1{
-            font-size: 2.5em;
-            line-height: 2;
-            margin: 1em 0;
-        }
+        padding: 4em 0;
+        background-color: #f5f8fa;
+        margin: 0 -100px; 
         p{
-            color: #999;
+            line-height: 2;
+            .label{
+                border-color: black;
+                border-radius: 4px;
+                color: black;
+                &:hover{
+                    background-color: inherit;
+                }
+            }
         }
-        .html{
-            padding: 2em 0;
+        a{
+            color: rgba(0,0,0,0.5);
         }
-        .icon{
-            margin-right: .5em;
-            text-align: center;
-            color: #34495e;
-            line-height: 30px;
-            font-size: 16px;
-        }
-    }
-	.post-view{
-        display: flex;
     }
     .v-comment-box{
-        padding: 60px;
+        margin-top: 3em;
     }
 </style>
 <script>
     import { date} from '../filters';
-    import commentComponent from '../components/comment-component.vue';
+    // import commentComponent from '../components/comment-component.vue';
     import introComponent from '../components/intro-component.vue';
     export default {
         filters:{
             date
         },
         components:{
-            commentComponent,
+            // commentComponent,
             introComponent
         },
         data () {
+            console.log(this);
             return {
                 content: {
                     meta: {
@@ -154,11 +139,12 @@
                     .then(res => {
                     this.content = JSON.parse(res.body); 
                     this.title = this.content.meta.title;
-                    this.$children.forEach(v=>{
-                    if(v.constructor.name == 'CommentBox'){
-                            v.init();return;                    
-                        }
-                    })
+                    //load comment
+                    // this.$children.forEach(v=>{
+                    // if(v.constructor.name == 'CommentBox'){
+                    //         v.init();return;                    
+                    //     }
+                    // })
                     document.body.scrollTop = 0;
                 })
             }

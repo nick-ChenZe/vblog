@@ -1,7 +1,7 @@
 /*
 * generate html snapshot
 */
-exports.substring = function(s, n) {
+exports.subHTML = function(s, n) {
     var m, r = /<([^>\s]*)[^>]*>/g,
         stack = [],
         lasti = 0,
@@ -37,4 +37,11 @@ exports.substring = function(s, n) {
     }
     return result;
 
+}
+/*
+* generate string snapshot
+*/
+exports.substring = function(s){
+    var regex = /(<([^>]+)>)/ig;
+    return s.split(/<!--\s*more\s*-->/)[0].replace(regex, "");
 }

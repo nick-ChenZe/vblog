@@ -1,5 +1,5 @@
 <template>
-	<div class="profile">
+	<section class="profile">
 		<img src="/lib/assets/avatar.jpeg">
 		<div class="intro">
 			<h2>nick-ChenZe	</h2>
@@ -40,7 +40,7 @@
 			</ul>
 		</div>
 		<footer><small>Power by <a href="https://github.com/nick-ChenZe/vblog">Vblog</a> </small></footer>
-	</div>
+	</section>
 </template>
 <style lang="less" scoped>	
 	.profile{

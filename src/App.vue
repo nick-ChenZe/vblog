@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <!-- <player-component class="player"></player-component> -->
         <router-view
-            class="app-view"
+            class="app-view row"
             keep-alive
             transition
             transition-mode="out-in">
@@ -11,21 +11,21 @@
 </template>
 <script>
     import playerComponent from "./components/player-component.vue"
-
+    import setting from './setting.js';
     export default{
         components:{
             playerComponent
+        },
+        data(){
+            return {
+                setting: setting
+            }
         }
     }
 </script>
 <style lang="less">
-    @import "main.less";
-    .nav{
-        position: absolute;
-        min-width: 900px;
-        top: 0;
-        left: 0;
-    }
+    @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+    @import "./style/main.less";
     .player{
         position: fixed;
         bottom: 0;

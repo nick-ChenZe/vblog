@@ -30,7 +30,9 @@ function f1(url) {
     return new Promise(function (resolve, reject) {
         fs.readdir(`${ROOT}/post`,function (err,data) {
 			if(err) reject(`[Read Directory Error]: ${err}`);
-			resolve(data);
+			resolve(_.remove(data,function(v){
+                return /.md$/.test(v);
+            }));
 		});
     });
 }
@@ -50,9 +52,10 @@ function f3(files){
 			try{
 		        meta = yaml.safeLoad(text[2]);
 		       	meta.id = generate.generatedId(meta.title,meta.date);
+                meta.length = text[3].length;
 	       		content = md.render(text[3]);
 	       		try{
-		        	meta.snapshot = substring.substring(content,200);
+		        	meta.snapshot = substring.substring(content);
 	       		}catch(e){
 	       			console.log(e);
 	       		}
@@ -65,35 +68,41 @@ function f3(files){
 	});
 }
 function f4(lists) {
-	var metaList = []
+	var metaList = [];
+    var totalStringLength = 0,tags =[];
+    var listObject;
 	lists.forEach(function(v){
+        totalStringLength +=  v.content.length;
 		metaList.push(v.meta);
 	})
 	var metaList =  _.sortBy(metaList,function(n){
         return - new Date(n.date).getTime();
     })
 	metaList.forEach(function(v,k,o){
-    	if(k == 0){
-    		v.next = null;
-    	}else if(k == o.length-1){
-    		v.prev == null;
-    	}else{
-    		o[k-1].next = {
-    			title: v.title,
-    			id: v.id
-    		}
-    		o[k+1].prev = {
-    			title: v.title,
-    			id: v.id
-    		}
-    	}
+        if(Array.isArray(v.tags)){
+            tags.push(v.tags);
+        }
+        var title = v.title,id = v.id;
+        if(k == o.length-1){
+            o[k-1].prev = {title,id}  
+        }else if(k == 0){
+            o[k+1].next = {title,id}  
+        }else{
+            o[k-1].prev = {title,id}  
+            o[k+1].next = {title,id}  
+        }
     });
+    listObject = {
+        totalStringLength: totalStringLength,
+        tagNumber: _.uniq(_.flatten(tags)).length,
+        lists: metaList
+    }
     lists.map(s =>{
         s.meta =  _.omit(_.filter(metaList,{id: s.meta.id})[0],'snapshot');
     	file.mkNestFileSync(`${ROOT}/api/${s.meta.id}.json`,JSON.stringify(s));
     })
     try{
-    	file.mkNestFileSync(`${ROOT}/api/list.json`,JSON.stringify(metaList));
+    	file.mkNestFileSync(`${ROOT}/api/list.json`,JSON.stringify(listObject));
     }catch(e){
     	console.log(`[Error in generating list JSON]: ${e}`);
     }
