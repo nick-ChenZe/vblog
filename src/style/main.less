@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:300italic,400italic,700,400,300);
+@grey: #f1f1f1;
+@dark: #ccc;
+@sky: #66D9E8;
+@blue: 2365FF;
+@red: #d9534f;
+@sm: .3em;
+@md: .6em;
+@bg: 1em;
+@font-xs: 18px;
+@font-sm: 20px;
+@font-md: 22px;
+@font-bg: 24px;
+@font-lg: 26px;
+@width-sm: 80px;
+body {
+    font-family: Merriweather, serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+ul,ol{
+    list-style: none;
+    padding: 0;
+}
+.btn{
+    &.btn-lg{
+        padding: .5em 5em;
+    }
+}
+.badge{
+    &.danger{
+        background-color: @red;
+    }
+}
+.generate-h(@base,@step,@n:1) when (@n<6) {
+  h@{n} {
+    font-size:(@base+(5 - @n)*@step);
+    text-indent: 0;
+    font-weight: bold;
+  }
+  .generate-h(@base,@step, (@n + 1));
+}
+a,
+a:hover,
+a:focus{
+    color: @blue;
+}
+.generate-h(@font-xs,2px);
+.label{
+    border: 1px solid  @dark;
+    border-radius: @font-lg;
+    padding: @sm 1.5*@bg;
+    color: @dark;
+    margin-right: @md;
+    font-size: .5*@font-xs;
+    font-weight: 100;
+    &:hover{
+        background-color: @sky;
+        color: white;
+        border-color: @sky;
+    }
+}
+.blog{
+    .post {
+        .title{
+            text-align: center;
+            font-size: 2em;
+            margin: 2em;   
+        }
+        .desc{
+            margin: 2em 0;
+            color: #999;
+            text-indent: 0;
+            .icon{
+                text-indent: 0;
+                line-height: 29px;
+                font-size: .8*@font-xs;
+                text-align: center;
+                border-radius: 100%;
+                width: 30px;
+                height: 30px;
+                box-shadow: 0 0 4px rgba(0,0,0,.2);
+                margin: 0 1em;
+            }
+        }
+        blockquote,p{
+            margin: .5em 0;
+        }
+        blockquote {
+            margin-left: -40px;
+            padding-left: 30px;
+            border-width: 10px;
+            border-color: @sky;
+            p {
+                margin: 0;
+                text-indent: 0;
+            }
+        }
+        h2,h3,h4,h5,h6{
+            margin: 1.5em 0;
+            &:before{
+                content: "# ";
+            }
+        }
+        table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: @sm;
+            // Cells
+            > thead,
+            > tbody,
+            > tfoot {
+                > tr {
+                    > th,
+                    > td {
+                        padding: @sm;
+                        vertical-align: top;
+                        border-top: 2px solid @grey;
+                    }
+                }
+            }
+            // Bottom align for column headings
+            > thead > tr > th {
+                vertical-align: bottom;
+                background-color: @sky;
+                color: white;
+            }
+            // Remove top border from thead by default
+            > caption + thead,
+            > colgroup + thead,
+            > thead:first-child {
+                > tr:first-child {
+                    > th,
+                    > td {
+                        border-top: 0;
+                    }
+                }
+            }
+            // Account for multiple tbody instances
+            > tbody + tbody {
+                border-top: 2px solid @grey;
+            }
+        }
+        p {
+            text-indent: 2em;
+            line-height: 1.8;
+            img{
+                display: block;
+                width: 100%;
+                margin-left: -2em;
+            }
+        }
+    }
+}

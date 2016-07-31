@@ -9,10 +9,7 @@ import Blog from './views/Blog.vue';
 import Category from './views/Category.vue';
 import Post from './views/Post.vue';
 
-//require('bootstrap/dist/css/bootstrap.min.css');
-require('highlight.js/styles/github-gist.css');
 require('lodash');
-require('font-awesome/css/font-awesome.min.css')
 var VueResource = require('vue-resource');
 window.duoshuoQuery = {short_name:"chenze2168"};
 

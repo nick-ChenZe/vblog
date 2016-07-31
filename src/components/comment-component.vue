@@ -1,9 +1,6 @@
 <template>
 	<div>
 		<h3>评论区</h3>
-		<br/>
-		<hr>
-		<br/>
 		<div class="ds-thread" 
 			:data-thread-key="key" 
 			:data-title="title" 
@@ -11,6 +8,12 @@
 		</div>
 	</div>
 </template>
+<style lang="less" scoped>
+	h3{
+		background-color: #eee;
+		padding: 1em;
+	}
+</style>
 <script type="text/javascript">
 	export default{
 		name: 'commentBox',
@@ -38,9 +41,3 @@
 		}
 	}	
 </script>
-<style lang="less">
-	h3{
-		line-height: 2em;
-		text-indent: .5em;
-	}
-</style>
