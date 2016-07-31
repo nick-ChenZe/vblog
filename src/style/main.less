@@ -2,7 +2,7 @@
 @grey: #f1f1f1;
 @dark: #ccc;
 @sky: #66D9E8;
-@blue: 2365FF;
+@blue: #2365FF;
 @red: #d9534f;
 @sm: .3em;
 @md: .6em;
@@ -67,6 +67,18 @@ a:focus{
             font-size: 2em;
             margin: 2em;   
         }
+        ul,ol{
+            padding-left: 40px;
+            li{
+                line-height: 1.8;
+            }
+        }
+        ul{
+            list-style: circle;
+        }
+        ol{
+            list-style: decimal;
+        }
         .desc{
             margin: 2em 0;
             color: #999;
@@ -90,6 +102,7 @@ a:focus{
             margin-left: -40px;
             padding-left: 30px;
             border-width: 10px;
+            font-style: italic;
             border-color: @sky;
             p {
                 margin: 0;

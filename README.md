@@ -29,16 +29,47 @@ npm run build    // buill bundle file
 ├── src             //For Vue compontents
 └── webpack.config.js
 ```
+## 中文
 
+Vblog是一个以Vuejs为基础的博客的框架，用nodeJs将所有Markdown文件转化为可用的JSON数据，在前台进行展示，它的优点
+
+- 利用Webpack，可以很轻松的进行调试
+- 无须担忧资源打包问题
+- 非常强的定制性，能完成大部分的需求
+- 单页面内部跳转无须重复加载资源
+
+## English
+
+1. We use Webpack, so it's easy to debug or redesign for you local enviroment.
+2. Don't need to worring about packageing resources.
+3. For its customizability, Vblog can meet most of your demands.
+3. Comparing to static pages,SPA has advantage on source loading.
+
+## Exampele post
+
+```Markdown
+//Add yaml letter in the head then you can get object in the FE
+---
+title: test post
+tags: [tag,tag2,tag3]
+categories: test
+date: 2016-07-20 22:20:00
+cover: 
+isTop: true
+---
+
+Your Markdown words
+
+```
 ##TODO
 
 
 - [ ] searching
-- [x] comment box style
-- [x] rewrite node process to promise
-- [x] 404 error design
-- [x] post page design
-- [ ] abstract vue compontents to compontents and viewsn
+- [x] <sup>comment box style</sup>
+- [x] <sup>rewrite node process to promise</sup>
+- [x] <sup>404 error design</sup>
+- [x] <sup>post page design</sup>
+- [x] <sup>abstract vue compontents to compontents and viewsn</sup>
 
 ## LICENSE
 Copyright (c) 2015 nick-ChenZe

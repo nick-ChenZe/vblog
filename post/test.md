@@ -6,6 +6,7 @@ date: 2016-07-20 22:20:00
 cover: 
 isTop: true
 ---
+# 测试文章
 
 ## Markdown简介
 
@@ -13,39 +14,36 @@ isTop: true
 
 正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为**粗体**或者*斜体*，创建一个[链接](http://www.example.com)或一个脚注[^demo]。下面列举了几个高级功能，更多语法请按`Ctrl + /`查看帮助。 
 
-<!-- more -->
+<!-- more --> 
 
-### 代码块
+## 中文
 
-```java
-private void bounceAnimateView(View view) {  
-    ...
-    Animator swing = ObjectAnimator.ofFloat(view, "rotationX", 0, 30, -20, 0);
-    swing.setDuration(400);
-    swing.setInterpolator(new AccelerateInterpolator());
-    swing.start();
-}
+Vblog是一个以Vuejs为基础的博客的框架，用nodeJs将所有Markdown文件转化为可用的JSON数据，在前台进行展示，它的优点
+
+- 利用Webpack，可以很轻松的进行调试
+- 无须担忧资源打包问题
+- 非常强的定制性，能完成大部分的需求
+- 单页面内部跳转无须重复加载资源
+
+## English
+
+1. We use Webpack, so it's easy to debug or redesign for you local enviroment.
+2. Don't need to worring about packageing resources.
+3. For its customizability, Vblog can meet most of your demands.
+3. Comparing to static pages,SPA has advantage on source loading.
+
+## 代码块 Code Block
+
+```javascript
+$(function(){
+  $('div').html('I am a div.');
+});
 ```
+## 超链接 Hpyperlink
 
+ * [markdown-it](https://github.com/markdown-it/markdown-it) for Markdown parsing
 
-### 表格
-| Item      |    Value | Qty  |
-| :-------- | --------:| :--: |
-| Computer  | 1600 USD |  5   |
-| Phone     |   12 USD |  12  |
-| Pipe      |    1 USD | 234  |
-
-# h1
-## h2
-### h3
-#### h4
-##### h5
-
-[link](www.baidu.com)
-
-*b*
-
-**@peter**
+:+1:
 
  
 
