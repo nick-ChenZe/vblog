@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var SpritesmithPlugin = require('webpack-spritesmith');
 
 // path
 var ROOT_PATH = path.resolve(__dirname);
@@ -45,7 +46,7 @@ module.exports = {
             loader: "style-loader!css-loader"
         }, {
             test: /\.(png|jpg|jpeg)$/,
-            loader: 'url?limit=5120'
+            loaders: ['file?name=i/[hash].[ext]']
         }, {
             test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
             loader: "file"
@@ -68,6 +69,19 @@ module.exports = {
             title: '竖八不正',
             template: path.resolve(SRC_PATH, 'index.html'),
             filename: '../index.html'
+        }),
+        new SpritesmithPlugin({
+            src: {
+                cwd: path.resolve(__dirname, 'dist/icon'),
+                glob: '*.png'
+            },
+            target: {
+                image: path.resolve(__dirname, 'src/style/img/sprite.png'),
+                css: path.resolve(__dirname, 'src/style/sprite.less')
+            },
+            apiOptions: {
+                cssImageRef: "./img/sprite.png"
+            }
         })
     ],
     vue: {

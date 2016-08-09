@@ -1,7 +1,14 @@
+/*
+* main
+*/
 @import url(https://fonts.googleapis.com/css?family=Merriweather:300italic,400italic,700,400,300);
+@import './sprite.less';
+
 @grey: #f1f1f1;
-@dark: #ccc;
+@black: rgba(0,0,0,.9);
+@dark: rgba(0,0,0,.44);
 @sky: #66D9E8;
+@green: #00ab6b;
 @blue: #2365FF;
 @red: #d9534f;
 @sm: .3em;
@@ -13,19 +20,49 @@
 @font-bg: 24px;
 @font-lg: 26px;
 @width-sm: 80px;
+.sprites(@spritesheet-sprites);
 body {
     font-family: Merriweather, serif;
     font-size: 18px;
+    color: @black;
     font-weight: 300;
 }
 ul,ol{
     list-style: none;
     padding: 0;
 }
+a,a:hover{
+    text-decoration: none;
+}
+img{
+    display:block;
+}
+small{
+    color: @dark;
+}
+
+.small{
+    font-size: 12px;
+}
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
 .btn{
     &.btn-lg{
         padding: .5em 5em;
     }
+    &.btn-sm{
+        padding: 0 1em;
+        font-weight: 100;
+        background-color: white;
+        border-radius: 2em;
+        border: 1px solid @green;
+        color: @green;
+    }
+}
+.sub{
+    color: @dark;
 }
 .badge{
     &.danger{
@@ -40,11 +77,11 @@ ul,ol{
   }
   .generate-h(@base,@step, (@n + 1));
 }
-a,
-a:hover,
-a:focus{
-    color: @blue;
-}
+// a,
+// a:hover,
+// a:focus{
+//     color: @blue;
+// }
 .generate-h(@font-xs,2px);
 .label{
     border: 1px solid  @dark;
@@ -94,6 +131,9 @@ a:focus{
                 box-shadow: 0 0 4px rgba(0,0,0,.2);
                 margin: 0 1em;
             }
+        }
+        img{
+            margin: 1em -100px;
         }
         blockquote,p{
             margin: .5em 0;

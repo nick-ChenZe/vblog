@@ -4,5 +4,7 @@ export default {
 		linkname: '@nick-ChenZe',
 		href:'',
 		introduction:'一生致力浪漫极客！'
-	}
+	},
+	pageItem: 5,
+	defaultCover: '/lib/assets/bg.jpg'
 }

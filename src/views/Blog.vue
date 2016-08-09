@@ -1,22 +1,31 @@
 <template>
     <main class="blog-view">
-        <section class="content col-md-12">
-            <h5>> 第一次记录文章于{{ start | dateAgo}}，至今共写了{{items.length}}篇文章，总计{{body.totalStringLength}}字, 留下{{body.tagNumber}}个标记 </h5>
+    <!-- TODO: Need Nav Bar -->
+
+        <section class="content col-md-9">
+            <h5>> 第一次记录文章于{{ start | dateAgo}}，至今共写了{{allItems.length}}篇文章，总计{{body.totalStringLength}}字, 留下{{body.tagNumber}}个标记 </h5>
             <div>
-                <div class="item" v-for="item in items">
+                <div class="item" v-for="item in items"  v-bind:data-date="item.date | dateAgo">
+                    <div class="ill">
+                        <img v-bind:src="item.cover || $root.setting.defaultCover">
+                    </div>
                     <h4 class="title" >
-                        <a v-link="{path:`/post/${item.id}`}" class="text-overflow" v-bind:title="item.title"># {{item.title | capitalize}}</a>
+                        {{item.title | capitalize}}
                         <span class="badge danger" v-if="item.isTop">置顶</span>
-                        <span class="pull-right hidden-xs">
-                            <i>{{item.date | dateAgo}}发布于{{item.categories | capitalize}}</i> 
-                        </span>
                     </h4>
-                    <p>
-                        <span class="label" v-for="tag in item.tags">{{tag}}</span>
+                    <p class="snap">
+                        {{item.snapshot}}
                     </p>
-                    <p>
-                    {{item.snapshot}}
-                    <a v-link="{path:`/post/${item.id}`}" class="inline">>></a>
+                    <a v-link="{path:`/post/${item.id}`}">
+                        <small class="small">查看更多...</small>
+                    </a>
+                    <p class="tags clearfix">
+                        <i class="icon icon-tag pull-left"></i>
+                        <small class="small pull-left" v-for="tag in item.tags">{{tag}}</small>
+                        <small class="small pull-right">
+                            <!-- <i class="icon icon-book"></i> -->
+                            归档于 {{item.categories | capitalize}}
+                        </small>
                     </p>
                 </div>
                 <button v-on:click="load(pageNum)" class="btn btn-lg btn-default" v-show="hasItem">More</button>
@@ -53,6 +62,7 @@
             }
         },
         attached(){
+            document.title= this.$root.setting.user.username;
             if(!this.allItems.length){
                 this.$http.get('../../api/list.json')
                     .then(res => {
@@ -67,7 +77,7 @@
             load (page){
                 let len = this.allItems.length;
                 let start = 0;
-                let end = page*10;
+                let end = page*this.$root.setting.pageItem;
                 this.hasItem = end < len ? true : false;
                 // this.$broadcast('getTotalNum', len);
                 this.items = _.take(this.allItems,len).splice(start,end);
@@ -88,22 +98,74 @@
         >h5{
             line-height: 1.5;
         }
-        >div>button{
-            margin: 2em auto;
-            margin-left: 50%;
-            transform: translate(-50%,0);
+        >div{
+            padding: 1em 0;
+            >button{
+                margin: 1em auto;
+                margin-left: 50%;
+                transform: translate(-50%,0);
+            }
+        }
+    }
+    [data-date]{
+        position: relative;
+        overflow: hidden;
+        &:after{
+            content: attr(data-date);
+            border-radius: 3px;
+            width: 8em;
+            height: 8em;
+            font-size: 14px;
+            transform: rotate(45deg) translate(0,-70%);
+            padding-top: 6em;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            background-color: #00ab6b;
+            color: white;
+            top: 0;
+            right: 0;
         }
     }
     .item{
-        border-bottom: 1px solid #ddd;
-        padding: 1em 0;
-        p{
-            margin: .8em 0; 
+        box-shadow: 0 1px 4px rgba(0,0,0,.04);
+        border: 1px solid rgba(0,0,0,.09);
+        border-radius: 3px;
+        background-color: white;
+        padding: 1em;
+        margin-bottom: 1.5em;
+        .title{
+            font-size: 1.4em;
+            margin: 1em 0 .8em;
         }
-        .inline{
-            color: inherit;
-            font-size: 15px;
-            font-weight: bold;
+        .snap{
+            color: rgba(0,0,0,.44);
+            font-size: .8em;
+            &::after{
+                content: '...';
+            }
+        }
+        >.ill{
+            height: 200px;
+            overflow: hidden;
+            border-radius: 3px;
+            img{
+                max-width: 100%;
+                min-height: 200px;
+            }
+        }
+        .tags{
+            margin: .5em 0 0;
+            border-top: 1px solid rgba(0,0,0,.09);
+            padding-top: 1em;
+            .small{
+                &.pull-left{
+                    padding: .2em 1.5em;
+                    margin: 0 .3em;
+                    background-color: #eee;
+                    border-radius: .2em;
+                }
+            }
         }
     }
 </style>

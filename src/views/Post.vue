@@ -1,43 +1,32 @@
 <template>
 	 <main class="post-view">
-        <header class="banner">
-            <a v-link="{path:'/blog'}">Home</a>
-            <img src="/lib/assets/WZpXaW.jpg">
-        </header>
-        <section class="blog col-md-offset-1 col-md-10 col-sm-12">
+        <div class="into hidden-xs clearfix">
+            <intro-component v-bind:date="content.meta.date"></intro-component>
+        </div>
+        <h1 class="title">{{content.meta.title | capitalize}}</h1>
+        <div class="cover">
+            <img v-bind:src="content.meta.cover || $root.setting.defaultCover">
+        </div>
+        <section class="blog col-sm-12">
             <div class="post">
-                <h1 class="title">{{content.meta.title}}</h1>
-                <p class="desc">
-                
-                    <span class="icon glyphicon glyphicon-home"></span>
-                    发布于{{content.meta.date | date}}
-
-                    <span class="icon glyphicon glyphicon-bookmark"></span>
-                    {{content.meta.categories | capitalize}}
-
-                </p>
                 <div class="html" v-html="content.content"></div>
             </div>
-            <p class="label-list">
-                <span class="label" v-for="tag in content.meta.tags">{{tag}}</span>
+            <p class="label-list clearfix">
+                <small class="pull-left small" v-for="tag in content.meta.tags">{{tag}}</small>
             </p>
-            <div class="into hidden-xs">
-                <intro-component></intro-component>
-            </div>
-            <div class="page clearfix text-center hidden-xs">
-                <div class="col-md-6">
-                    <p><span class="label">Next</span>下一篇文章：</p>
+            
+            <div class="page clearfix  hidden-xs">
+                <div class="col-md-6 text-center text-overflow">
                     <a v-if="content.meta.prev" v-link="{path:`/post/${content.meta.prev.id}`}">
-                    {{content.meta.prev.title}}
+                        Prev: {{content.meta.prev.title}}
                     </a>
-                    <a v-else href="javascript:;">这是最新的一篇文章</a>
+                    <a v-else href="javascript:;">这是最早的一篇文章</a>
                 </div>
-                <div class="col-md-6 ">
-                    <p><span class="label">Last</span>上一篇文章：</p>
-                    <a v-if="content.meta.next"v-link="{path:`/post/${content.meta.next.id}`}">
-                    {{content.meta.next.title}}
+                <div class="col-md-6 text-center text-overflow">
+                    <a v-if="content.meta.next" v-link="{path:`/post/${content.meta.next.id}`}">
+                    Next: {{content.meta.next.title}}
                     </a>
-                <a v-else href="javascript:;">这是最早的一篇文章</a>
+                <a v-else href="javascript:;">这是最新的一篇文章</a>
                 </div>
             </div>
            <!--  <comment-component 
@@ -51,48 +40,37 @@
 </template>	
 <style lang="less">
     @import "../style/highlight.less";
-    @import "../style/comment.less";
-    .banner{
-        display: block;
-        position: relative;
-        height: 300px;
-        a,img{
-            position: absolute;
+    // @import "../style/comment.less";
+    .post-view{
+        background-color: white;
+        padding: 100px 200px 0;
+        .title{
+            margin: 2em 0;
         }
-        a{
-            color: white;
-            margin: 1em;
-        }
-        img{
-            width: 100%;
-                height: inherit;
-            z-index: -1;
-        }
-    }
-    .label-list,.into{
-        margin: 4em 0;
-    }
-    .page{
-        padding: 4em 0;
-        background-color: #f5f8fa;
-        margin: 0 -100px; 
-        p{
-            line-height: 2;
-            .label{
-                border-color: black;
-                border-radius: 4px;
-                color: black;
-                &:hover{
-                    background-color: inherit;
-                }
+        .cover{
+            height: 400px;
+            margin: 0 -200px 2em;
+            overflow: hidden;
+            img{
+                width: 100%;
+                min-height: 400px;
             }
         }
-        a{
-            color: rgba(0,0,0,0.5);
+        .page{
+            font-size: 14px;
+            margin: 0 -200px;
+            padding: 20px 0;
+            border-top: 1px solid #ddd;
         }
-    }
-    .v-comment-box{
-        margin-top: 3em;
+        .label-list{
+            margin: 2em 0;
+            .small{
+                padding: .6em 2em;
+                margin-right: 2em;
+                background-color: #eee;
+                border-radius: .2em;
+            }
+        }
     }
 </style>
 <script>
@@ -108,7 +86,6 @@
             introComponent
         },
         data () {
-            console.log(this);
             return {
                 content: {
                     meta: {
@@ -139,12 +116,7 @@
                     .then(res => {
                     this.content = JSON.parse(res.body); 
                     this.title = this.content.meta.title;
-                    //load comment
-                    // this.$children.forEach(v=>{
-                    // if(v.constructor.name == 'CommentBox'){
-                    //         v.init();return;                    
-                    //     }
-                    // })
+                    document.title = `${this.title} - ${this.$root.setting.user.username}`
                     document.body.scrollTop = 0;
                 })
             }

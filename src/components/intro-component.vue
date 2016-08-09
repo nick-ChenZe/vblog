@@ -1,52 +1,44 @@
 <template>
-	<section class="media">
-	  	<div class="media-left media-middle col-md-6">
-		    <div class="media-left media-middle">
-			    <a href="#">
-			      <img class="media-object img-circle" src="/lib/assets/avatar.jpeg" alt="...">
-			    </a>
-	  		</div>
-		  	<div class="media-body media-middle text-center">
-		    	<h4 class="media-heading">{{$root.setting.user.username}}</h4>
-		    	<a v-bind:href="$root.setting.user.href">{{$root.setting.user.linkname}}</a>
-		  	</div>
-
-	 	</div>
-	  	<div class="media-body middle col-md-6">
-	  		<p class="text-overflow">
+	<section class="media col-xs-4">
+	    <div class="media-left media-middle">
+		    <a href="#">
+		      <img class="media-object img-circle" src="/lib/assets/avatar.jpeg" alt="...">
+		    </a>
+  		</div>
+	  	<div class="media-body media-middle">
+	    	<span>{{$root.setting.user.linkname}}<button class="btn btn-sm">follow</button></span>
+	    	<br>
+	    	<p class="sub">
 				{{$root.setting.user.introduction}}
-			</p>
+				<br>
+				{{date| dateAgo}}
+	    	</p>
 	  	</div>
 	</section>
 </template>
 <script type="text/javascript">
+    import {dateAgo} from '../filters';
 	export default{
-		name: 'intro'
+		name: 'intro',
+		props:['date'],
+		filters: {dateAgo}
 	}
 </script>
 <style lang="less" scoped>
-	img{
-		width: 100px;
-		height: 100px;
-	}
 	.media{
-		&>.media-middle{
-			padding: 0 80px;
-			a{
-				color: rgba(0,0,0,.5);
-			}
+		font-size: 12px;
+		padding: 0;
+		.btn{
+			margin-left: .8em;
+			vertical-align: 0;
 		}
-		&>.media-body{
-			width: 50%;
+		.sub{
+			line-height: 1.5;
+			margin: 0;
 		}
-	}
-	.middle{
-		line-height: 100px;
-		border-left:  1px solid #ddd;
-		p{
-			display: inline-block;
-			text-indent: 2em;
-			line-height: 1.4;
+		img{
+			width: 60px;
+			height: 60px;
 		}
 	}
 </style>

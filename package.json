@@ -45,6 +45,7 @@
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.12.1",
+    "webpack-spritesmith": "^0.2.5",
     "yaml": "^0.3.0"
   },
   "scripts": {

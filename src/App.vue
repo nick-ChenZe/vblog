@@ -26,6 +26,10 @@
 <style lang="less">
     @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
     @import "./style/main.less";
+    .app-view{
+        background-color: #fafafa;
+        min-height: 100vh;
+    }
     .player{
         position: fixed;
         bottom: 0;
