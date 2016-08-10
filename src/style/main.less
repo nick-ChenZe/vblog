@@ -49,16 +49,23 @@ small{
   vertical-align: middle;
 }
 .btn{
+    font-family: 'Mircrosoft YaHei';
+    &.btn-default{
+        background-color: transparent;
+        border: 1px solid @green;
+        border-radius: 1em;
+        color: @green;
+        padding: .1em 1em;
+    }
     &.btn-lg{
         padding: .5em 5em;
+        border-radius: 3em;
     }
     &.btn-sm{
         padding: 0 1em;
         font-weight: 100;
-        background-color: white;
+        font-size: 12px;
         border-radius: 2em;
-        border: 1px solid @green;
-        color: @green;
     }
 }
 .sub{

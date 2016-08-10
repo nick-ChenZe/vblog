@@ -1,11 +1,11 @@
 <template>
 	 <main class="post-view">
-        <div class="into hidden-xs clearfix">
+        <div class="into hidden-sm hidden-xs clearfix">
             <intro-component v-bind:date="content.meta.date"></intro-component>
         </div>
         <h1 class="title">{{content.meta.title | capitalize}}</h1>
-        <div class="cover">
-            <img v-bind:src="content.meta.cover || $root.setting.defaultCover">
+        <div class="cover" v-if="content.meta.cover ">
+            <img v-bind:src="content.meta.cover">
         </div>
         <section class="blog col-sm-12">
             <div class="post">
@@ -15,7 +15,7 @@
                 <small class="pull-left small" v-for="tag in content.meta.tags">{{tag}}</small>
             </p>
             
-            <div class="page clearfix  hidden-xs">
+            <div class="page clearfix">
                 <div class="col-md-6 text-center text-overflow">
                     <a v-if="content.meta.prev" v-link="{path:`/post/${content.meta.prev.id}`}">
                         Prev: {{content.meta.prev.title}}
@@ -43,13 +43,15 @@
     // @import "../style/comment.less";
     .post-view{
         background-color: white;
-        padding: 100px 200px 0;
+        padding: 0 200px 0;
         .title{
-            margin: 2em 0;
+            margin: 2em 0 0;
+        }
+        .into{
+            margin-top: 60px;
         }
         .cover{
-            height: 400px;
-            margin: 0 -200px 2em;
+            margin: 2em -200px 2em;
             overflow: hidden;
             img{
                 width: 100%;
@@ -59,8 +61,10 @@
         .page{
             font-size: 14px;
             margin: 0 -200px;
-            padding: 20px 0;
             border-top: 1px solid #ddd;
+            >div{
+                margin: 20px 0;
+            }
         }
         .label-list{
             margin: 2em 0;
@@ -69,6 +73,22 @@
                 margin-right: 2em;
                 background-color: #eee;
                 border-radius: .2em;
+            }
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .post-view{
+            padding: 20px;
+            .cover{
+                margin-left: -20px;
+                margin-right: -20px;
+            }
+            .page{
+                margin-left: 0;
+                >div{
+                    text-align: left;
+                }
             }
         }
     }

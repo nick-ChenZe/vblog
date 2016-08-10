@@ -1,15 +1,15 @@
 <template>
-	<section class="media col-xs-4">
+	<section class="media col-xs-5">
 	    <div class="media-left media-middle">
 		    <a href="#">
 		      <img class="media-object img-circle" src="/lib/assets/avatar.jpeg" alt="...">
 		    </a>
   		</div>
 	  	<div class="media-body media-middle">
-	    	<span>{{$root.setting.user.linkname}}<button class="btn btn-sm">follow</button></span>
+	    	<span>{{$root.setting.user.linkname}}<button class="btn btn-sm btn-default">follow</button></span>
 	    	<br>
 	    	<p class="sub">
-				{{$root.setting.user.introduction}}
+				{{$root.setting.user.slogan}}
 				<br>
 				{{date| dateAgo}}
 	    	</p>
